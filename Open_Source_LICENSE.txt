@@ -1,4 +1,6 @@
-Copyright 2012 André Slupik
+This project uses code from the asik/FixedMath.Net library, which is under the following license:
+
+Copyright 2012 AndrÃ© Slupik
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
