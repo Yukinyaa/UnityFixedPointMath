@@ -241,11 +241,11 @@ namespace FixMath.NET
 
             // Determine interpolation weights
             // Could also use higher order polynomial/s-curve here
-            Fix64 sx = x - x0;
-            Fix64 sy = y - y0;
+            Fix64 sx = x - (Fix64)x0;
+            Fix64 sy = y - (Fix64)y0;
 
             // Interpolate between grid point gradients
-            float n0, n1, ix0, ix1, value;
+            Fix64 n0, n1, ix0, ix1, value;
 
             n0 = dotGridGradient(x0, y0, x, y);
             n1 = dotGridGradient(x1, y0, x, y);
@@ -258,7 +258,6 @@ namespace FixMath.NET
             value = interpolate(ix0, ix1, sy);
             return value;
         }
-}
 
         public static Fix64 operator *(Fix64 x, Fix64 y)
         {
