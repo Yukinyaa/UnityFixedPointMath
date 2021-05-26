@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace FixMath.NET
+namespace FixMath.NET.Experimental
 {
     public class Fix16Test
     {

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Globalization;
 
-namespace FixMath.NET {
+namespace FixMath.NET.Experimental
+{
 
     /// <summary>
     /// This is more or less a straight port of libfixmath (https://code.google.com/p/libfixmath/)

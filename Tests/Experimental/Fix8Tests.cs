@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Xunit;
 
-namespace FixMath.NET
+namespace FixMath.NET.Experimental
 {
 
     public class Fix8Tests {

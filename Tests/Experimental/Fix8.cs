@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace FixMath.NET {
+namespace FixMath.NET.Experimental {
 
     /// <summary>
     /// Represents a Q3.4 fixed-point number.

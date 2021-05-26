@@ -1,5 +1,6 @@
 ﻿
-namespace FixMath.NET {
+namespace FixMath.NET.Experimental
+{
     partial struct Fix16 {
 
         #region SinLut
