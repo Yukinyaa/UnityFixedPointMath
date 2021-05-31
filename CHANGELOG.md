@@ -1,3 +1,8 @@
+### 1.1.4
+
+Exposed `repeat` from perlinnoise for looping pattern.
+Updated readme
+
 ### 1.1.3
 
 FIxed Pienv, PiOver2Inv being derived from double(not very deterministic)
