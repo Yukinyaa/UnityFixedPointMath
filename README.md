@@ -9,4 +9,4 @@ Designed to use deterministic fixed points in all operations.
 
 Perlin noise source from [Flafla2](https://gist.github.com/Flafla2)/[Perlin.cs](https://gist.github.com/Flafla2/1a0b9ebef678bbce3215)
 
-![PerlinNoise](.\PerlinNoise.png)
+![PerlinNoise](PerlinNoise.png)
