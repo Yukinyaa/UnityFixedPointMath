@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Xunit;
+using NUnit;
+using NUnit.Framework;
 
 namespace FixMath.NET
 {
@@ -44,13 +45,13 @@ namespace FixMath.NET
             -376, 435, -311, 116, 715, -1024, -487, 59, 724, 993
         };
 
-        [Fact]
+        [Test]
         public void Precision()
         {
-            Assert.Equal(0.00000000023283064365386962890625m, Fix64.Precision);
+            Assert.AreEqual(0.00000000023283064365386962890625m, Fix64.Precision);
         }
 
-        [Fact]
+        [Test]
         public void LongToFix64AndBack()
         {
             var sources = new[] { long.MinValue, int.MinValue - 1L, int.MinValue, -1L, 0L, 1L, int.MaxValue, int.MaxValue + 1L, long.MaxValue };
@@ -60,11 +61,11 @@ namespace FixMath.NET
                 var expected = expecteds[i];
                 var f = (Fix64)sources[i];
                 var actual = (long)f;
-                Assert.Equal(expected, actual);
+                Assert.AreEqual(expected, actual);
             }
         }
 
-        [Fact]
+        [Test]
         public void DoubleToFix64AndBack()
         {
             var sources = new[] {
@@ -96,12 +97,12 @@ namespace FixMath.NET
             Assert.True(Math.Abs(value2 - value1) < (double)Fix64.Precision);
         }
 
-        [Fact]
+        [Test]
         public void DecimalToFix64AndBack()
         {
 
-            Assert.Equal(Fix64.MaxValue, (Fix64)(decimal)Fix64.MaxValue);
-            Assert.Equal(Fix64.MinValue, (Fix64)(decimal)Fix64.MinValue);
+            Assert.AreEqual(Fix64.MaxValue, (Fix64)(decimal)Fix64.MaxValue);
+            Assert.AreEqual(Fix64.MinValue, (Fix64)(decimal)Fix64.MinValue);
 
             var sources = new[] {
                 int.MinValue,
@@ -122,7 +123,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void Addition()
         {
             var terms1 = new[] { Fix64.MinValue, (Fix64)(-1), Fix64.Zero, Fix64.One, Fix64.MaxValue };
@@ -132,11 +133,11 @@ namespace FixMath.NET
             {
                 var actual = terms1[i] + terms2[i];
                 var expected = expecteds[i];
-                Assert.Equal(expected, actual);
+                Assert.AreEqual(expected, actual);
             }
         }
 
-        [Fact]
+        [Test]
         public void Substraction()
         {
             var terms1 = new[] { Fix64.MinValue, (Fix64)(-1), Fix64.Zero, Fix64.One, Fix64.MaxValue };
@@ -146,11 +147,11 @@ namespace FixMath.NET
             {
                 var actual = terms1[i] - terms2[i];
                 var expected = expecteds[i];
-                Assert.Equal(expected, actual);
+                Assert.AreEqual(expected, actual);
             }
         }
 
-        [Fact]
+        [Test]
         public void BasicMultiplication()
         {
             var term1s = new[] { 0m, 1m, -1m, 5m, -5m, 0.5m, -0.5m, -1.0m };
@@ -160,11 +161,11 @@ namespace FixMath.NET
             {
                 var expected = expecteds[i];
                 var actual = (long)((Fix64)term1s[i] * (Fix64)term2s[i]);
-                Assert.Equal(expected, actual);
+                Assert.AreEqual(expected, actual);
             }
         }
 
-        [Fact]
+        [Test]
         public void MultiplicationTestCases()
         {
             var sw = new Stopwatch();
@@ -207,7 +208,7 @@ namespace FixMath.NET
 
         static void Ignore<T>(T value) { }
 
-        [Fact]
+        [Test]
         public void DivisionTestCases()
         {
             var sw = new Stopwatch();
@@ -257,7 +258,7 @@ namespace FixMath.NET
 
 
 
-        [Fact]
+        [Test]
         public void Sign()
         {
             var sources = new[] { Fix64.MinValue, (Fix64)(-1), Fix64.Zero, Fix64.One, Fix64.MaxValue };
@@ -266,39 +267,39 @@ namespace FixMath.NET
             {
                 var actual = Fix64.Sign(sources[i]);
                 var expected = expecteds[i];
-                Assert.Equal(expected, actual);
+                Assert.AreEqual(expected, actual);
             }
         }
 
-        [Fact]
+        [Test]
         public void Abs()
         {
-            Assert.Equal(Fix64.MaxValue, Fix64.Abs(Fix64.MinValue));
+            Assert.AreEqual(Fix64.MaxValue, Fix64.Abs(Fix64.MinValue));
             var sources = new[] { -1, 0, 1, int.MaxValue };
             var expecteds = new[] { 1, 0, 1, int.MaxValue };
             for (int i = 0; i < sources.Length; ++i)
             {
                 var actual = Fix64.Abs((Fix64)sources[i]);
                 var expected = (Fix64)expecteds[i];
-                Assert.Equal(expected, actual);
+                Assert.AreEqual(expected, actual);
             }
         }
 
-        [Fact]
+        [Test]
         public void FastAbs()
         {
-            Assert.Equal(Fix64.MinValue, Fix64.FastAbs(Fix64.MinValue));
+            Assert.AreEqual(Fix64.MinValue, Fix64.FastAbs(Fix64.MinValue));
             var sources = new[] { -1, 0, 1, int.MaxValue };
             var expecteds = new[] { 1, 0, 1, int.MaxValue };
             for (int i = 0; i < sources.Length; ++i)
             {
                 var actual = Fix64.FastAbs((Fix64)sources[i]);
                 var expected = (Fix64)expecteds[i];
-                Assert.Equal(expected, actual);
+                Assert.AreEqual(expected, actual);
             }
         }
 
-        [Fact]
+        [Test]
         public void Floor()
         {
             var sources = new[] { -5.1m, -1, 0, 1, 5.1m };
@@ -307,11 +308,11 @@ namespace FixMath.NET
             {
                 var actual = (decimal)Fix64.Floor((Fix64)sources[i]);
                 var expected = expecteds[i];
-                Assert.Equal(expected, actual);
+                Assert.AreEqual(expected, actual);
             }
         }
 
-        [Fact]
+        [Test]
         public void Ceiling()
         {
             var sources = new[] { -5.1m, -1, 0, 1, 5.1m };
@@ -320,13 +321,13 @@ namespace FixMath.NET
             {
                 var actual = (decimal)Fix64.Ceiling((Fix64)sources[i]);
                 var expected = expecteds[i];
-                Assert.Equal(expected, actual);
+                Assert.AreEqual(expected, actual);
             }
 
-            Assert.Equal(Fix64.MaxValue, Fix64.Ceiling(Fix64.MaxValue));
+            Assert.AreEqual(Fix64.MaxValue, Fix64.Ceiling(Fix64.MaxValue));
         }
 
-        [Fact]
+        [Test]
         public void Round()
         {
             var sources = new[] { -5.5m, -5.1m, -4.5m, -4.4m, -1, 0, 1, 4.5m, 4.6m, 5.4m, 5.5m };
@@ -335,13 +336,13 @@ namespace FixMath.NET
             {
                 var actual = (decimal)Fix64.Round((Fix64)sources[i]);
                 var expected = expecteds[i];
-                Assert.Equal(expected, actual);
+                Assert.AreEqual(expected, actual);
             }
-            Assert.Equal(Fix64.MaxValue, Fix64.Round(Fix64.MaxValue));
+            Assert.AreEqual(Fix64.MaxValue, Fix64.Round(Fix64.MaxValue));
         }
 
 
-        [Fact]
+        [Test]
         public void Sqrt()
         {
             for (int i = 0; i < m_testCases.Length; ++i)
@@ -361,7 +362,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void Log2()
         {
             double maxDelta = (double)(Fix64.Precision * 4);
@@ -385,7 +386,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void Ln()
         {
             double maxDelta = 0.00000001;
@@ -409,7 +410,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void Pow2()
         {
             double maxDelta = 0.0000001;
@@ -425,7 +426,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void Pow()
         {
             for (int i = 0; i < m_testCases.Length; ++i)
@@ -461,7 +462,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void Modulus()
         {
             var deltas = new List<decimal>();
@@ -493,7 +494,7 @@ namespace FixMath.NET
             Console.WriteLine("failed: {0}%", deltas.Count(d => d > Fix64.Precision) * 100.0 / deltas.Count);
         }
 
-        //[Fact]
+        //[Test]
         //public void SinBenchmark()
         //{
         //    var deltas = new List<double>();
@@ -521,7 +522,7 @@ namespace FixMath.NET
         //    Console.WriteLine("Fix64.Sin time = {0}ms, Math.Sin time = {1}ms", swf.ElapsedMilliseconds, swd.ElapsedMilliseconds);
         //}
 
-        [Fact]
+        [Test]
         public void Sin()
         {
             Assert.True(Fix64.Sin(Fix64.Zero) == Fix64.Zero);
@@ -557,7 +558,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void FastSin()
         {
             for (double angle = -2 * Math.PI; angle <= 2 * Math.PI; angle += 0.0001)
@@ -579,15 +580,15 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void Acos()
         {
             var maxDelta = 0.00000001m;
             var deltas = new List<decimal>();
 
-            Assert.Equal(Fix64.Zero, Fix64.Acos(Fix64.One));
-            Assert.Equal(Fix64.PiOver2, Fix64.Acos(Fix64.Zero));
-            Assert.Equal(Fix64.Pi, Fix64.Acos(-Fix64.One));
+            Assert.AreEqual(Fix64.Zero, Fix64.Acos(Fix64.One));
+            Assert.AreEqual(Fix64.PiOver2, Fix64.Acos(Fix64.Zero));
+            Assert.AreEqual(Fix64.Pi, Fix64.Acos(-Fix64.One));
 
             // Precision
             for (var x = -1.0; x < 1.0; x += 0.001)
@@ -621,7 +622,7 @@ namespace FixMath.NET
             Console.WriteLine("Average precision: {0} ({1} times precision)", deltas.Average(), deltas.Average() / Fix64.Precision);
         }
 
-        [Fact]
+        [Test]
         public void Cos()
         {
             Assert.True(Fix64.Cos(Fix64.Zero) == Fix64.One);
@@ -656,7 +657,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void FastCos()
         {
             for (double angle = -2 * Math.PI; angle <= 2 * Math.PI; angle += 0.0001)
@@ -678,7 +679,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void Tan()
         {
             Assert.True(Fix64.Tan(Fix64.Zero) == Fix64.Zero);
@@ -695,7 +696,7 @@ namespace FixMath.NET
                 var f = (Fix64)angle;
                 var actualF = Fix64.Tan(f);
                 var expected = (decimal)Math.Tan(angle);
-                Assert.Equal(actualF > Fix64.Zero, expected > 0);
+                Assert.AreEqual(actualF > Fix64.Zero, expected > 0);
                 //TODO figure out a real way to test this function
             }
 
@@ -708,13 +709,13 @@ namespace FixMath.NET
             //}
         }
 
-        [Fact]
+        [Test]
         public void Atan()
         {
             var maxDelta = 0.00000001m;
             var deltas = new List<decimal>();
 
-            Assert.Equal(Fix64.Zero, Fix64.Atan(Fix64.Zero));
+            Assert.AreEqual(Fix64.Zero, Fix64.Atan(Fix64.Zero));
 
             // Precision
             for (var x = -1.0; x < 1.0; x += 0.0001)
@@ -740,7 +741,7 @@ namespace FixMath.NET
             Console.WriteLine("Max error: {0} ({1} times precision)", deltas.Max(), deltas.Max() / Fix64.Precision);
             Console.WriteLine("Average precision: {0} ({1} times precision)", deltas.Average(), deltas.Average() / Fix64.Precision);
         }
-        //[Fact]
+        //[Test]
         public void AtanBenchmark()
         {
             var deltas = new List<decimal>();
@@ -767,16 +768,16 @@ namespace FixMath.NET
             Console.WriteLine("Fix64.Atan time = {0}ms, Math.Atan time = {1}ms", swf.ElapsedMilliseconds, swd.ElapsedMilliseconds);
         }
 
-        [Fact]
+        [Test]
         public void Atan2()
         {
             var deltas = new List<decimal>();
             // Identities
-            Assert.Equal(Fix64.Atan2(Fix64.Zero, -Fix64.One), Fix64.Pi);
-            Assert.Equal(Fix64.Atan2(Fix64.Zero, Fix64.Zero), Fix64.Zero);
-            Assert.Equal(Fix64.Atan2(Fix64.Zero, Fix64.One), Fix64.Zero);
-            Assert.Equal(Fix64.Atan2(Fix64.One, Fix64.Zero), Fix64.PiOver2);
-            Assert.Equal(Fix64.Atan2(-Fix64.One, Fix64.Zero), -Fix64.PiOver2);
+            Assert.AreEqual(Fix64.Atan2(Fix64.Zero, -Fix64.One), Fix64.Pi);
+            Assert.AreEqual(Fix64.Atan2(Fix64.Zero, Fix64.Zero), Fix64.Zero);
+            Assert.AreEqual(Fix64.Atan2(Fix64.Zero, Fix64.One), Fix64.Zero);
+            Assert.AreEqual(Fix64.Atan2(Fix64.One, Fix64.Zero), Fix64.PiOver2);
+            Assert.AreEqual(Fix64.Atan2(-Fix64.One, Fix64.Zero), -Fix64.PiOver2);
 
             // Precision
             for (var y = -1.0; y < 1.0; y += 0.01)
@@ -812,7 +813,7 @@ namespace FixMath.NET
         }
 
 
-        //[Fact]
+        //[Test]
         public void Atan2Benchmark()
         {
             var deltas = new List<decimal>();
@@ -843,7 +844,7 @@ namespace FixMath.NET
             Console.WriteLine("Fix64.Atan2 time = {0}ms, Math.Atan2 time = {1}ms", swf.ElapsedMilliseconds, swd.ElapsedMilliseconds);
         }
 
-        [Fact]
+        [Test]
         public void Negation()
         {
             foreach (var operand1 in m_testCases)
@@ -851,18 +852,18 @@ namespace FixMath.NET
                 var f = Fix64.FromRaw(operand1);
                 if (f == Fix64.MinValue)
                 {
-                    Assert.Equal(-f, Fix64.MaxValue);
+                    Assert.AreEqual(-f, Fix64.MaxValue);
                 }
                 else
                 {
                     var expected = -((decimal)f);
                     var actual = (decimal)(-f);
-                    Assert.Equal(expected, actual);
+                    Assert.AreEqual(expected, actual);
                 }
             }
         }
 
-        [Fact]
+        [Test]
         public void EqualsTests()
         {
             foreach (var op1 in m_testCases)
@@ -876,7 +877,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void EqualityAndInequalityOperators()
         {
             var sources = m_testCases.Select(Fix64.FromRaw).ToList();
@@ -893,7 +894,7 @@ namespace FixMath.NET
             }
         }
 
-        [Fact]
+        [Test]
         public void CompareTo()
         {
             var nums = m_testCases.Select(Fix64.FromRaw).ToArray();

@@ -1,6 +1,6 @@
 {
   "name": "com.yukinyaa.fpmath",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "displayName": "Fixed Point Math",
   "description": "Fixed point math implimentation for unity",
   "keywords": [
@@ -12,5 +12,12 @@
     "email": "yukinyaa712@gmail.com",
     "url": "https://github.com/Yukinyaa/UnityFixedPointMath/"
   },
-  "type": "library"
+  "type": "library",
+  "samples": [
+    {
+      "displayName": "Perlin Sample",
+      "description": "Contains perlin noise sample/test",
+      "path": "Samples~/TestPerlinNoise"
+    }
+  ]
 }

@@ -1,6 +1,11 @@
+### 1.2.0
+
+Ported tests and added examples for Perlin noise,
+Updated readme
+
 ### 1.1.5
 
-Updated perlin noise code to Ken Perlin's vesion.
+Updated Perlin Noise code to Ken Perlin's vesion.
 
 ### 1.1.4
 

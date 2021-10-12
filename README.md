@@ -7,6 +7,6 @@ This project is forked from https://github.com/asik/FixedMath.Net, and is conver
 Basic Fix64 operations like `+` `-` `/` `*` `%` `>`  and some basic functions like `Log` `Sin` etc.  Ported to make deterministic system for lock-step game.
 Designed to use deterministic fixed points in all operations.
 
-Perlin noise source from [Flafla2](https://gist.github.com/Flafla2)/[Perlin.cs](https://gist.github.com/Flafla2/1a0b9ebef678bbce3215)
+Fixed point Perlin Noise source from [Ken Perlin](https://mrl.cs.nyu.edu/~perlin/noise/INoise.java) (yes the Perlin himself)
 
-![PerlinNoise](PerlinNoise.png)
+![PerlinNoise](Perlin.gif)
