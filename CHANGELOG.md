@@ -1,3 +1,7 @@
+### 1.1.5
+
+Updated perlin noise code to Ken Perlin's vesion.
+
 ### 1.1.4
 
 Exposed `repeat` from perlinnoise for looping pattern.
